@@ -3,6 +3,7 @@ import numpy as np
 import threading
 from imageio import imwrite,imread
 from scipy.ndimage import zoom
+from cv2 import resize
 
 class Corona():
     def __init__(self):
@@ -41,11 +42,11 @@ class World():
         self.colors = [[86,180,233],[240,228,66],[213,94,0],[0,114,178],[204,121,167]]
         
         self.emojis = []
-        self.emojis.append(imread("emojis/nonimmune.png",pilmode="RGB"))
-        self.emojis.append(imread("emojis/contagious.png",pilmode="RGB"))
-        self.emojis.append(imread("emojis/symptoms.png",pilmode="RGB"))
-        self.emojis.append(imread("emojis/immune.png",pilmode="RGB"))
-        self.emojis.append(imread("emojis/dead.png",pilmode="RGB"))
+        self.emojis.append(resize(imread("emojis/nonimmune.png",pilmode="RGB"),(32,32)))
+        self.emojis.append(resize(imread("emojis/contagious.png",pilmode="RGB"),(32,32)))
+        self.emojis.append(resize(imread("emojis/symptoms.png",pilmode="RGB"),(32,32)))
+        self.emojis.append(resize(imread("emojis/immune.png",pilmode="RGB"),(32,32)))
+        self.emojis.append(resize(imread("emojis/dead.png",pilmode="RGB"),(32,32)))
         
         self.emojiScale = self.emojis[0].shape[0]
         
